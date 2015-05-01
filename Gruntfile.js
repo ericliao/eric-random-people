@@ -133,7 +133,20 @@ module.exports = function (grunt) {
                 src: '*.js',
                 dest: 'dist'
             }
-        }
+        },
+        /**
+         * Start connect server at http://localhost:9000/.
+         * @see {@link https://github.com/gruntjs/grunt-contrib-connect|grunt-contrib-connect}
+         * @example grunt connect
+         */
+        connect: {
+            server: {
+                options: {
+                    hostname: 'localhost',
+                    port: 9000
+                }
+            }
+        },
     });
 
     grunt.registerTask('common', '', function () {
@@ -150,6 +163,7 @@ module.exports = function (grunt) {
         grunt.config.set('env', 'dev');
         grunt.task.run([
             'common',
+            'connect:server',
             'watch'
         ]);
     });
@@ -160,6 +174,4 @@ module.exports = function (grunt) {
             'uglify:js'
         ]);
     });
-
-    grunt.loadNpmTasks('grunt-serve');
 };
