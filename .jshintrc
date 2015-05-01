@@ -1,0 +1,10 @@
+{
+    "laxbreak": true, // Suppresses most of the warnings about possibly unsafe line breaking
+    "eqeqeq": true,   // Require triple equals (===) for comparison
+    "newcap": true,   // Require capitalization of all constructor functions e.g. `new F()`
+    "noarg": true,    // Prohibit use of `arguments.caller` and `arguments.callee`
+    "sub": false,     // Prohibit use of `[]` notation when it can be expressed in dot notation
+    "indent": 4,      // Tab width
+    "node": true,
+    "browser": true
+}
