@@ -23,13 +23,13 @@
         "load-grunt-tasks": "^0.4.0",
         "mocha": "^2.1.0",
         "react": "^0.12.1",
-        "reactify": "^0.17.1"
+        "reactify": "^0.17.1",
+        "swapi-node": "0.2.0"
     },
     "browser": {
         "lodash": "./vendor/lodash/lodash.compat.js",
         "backbone": "./vendor/backbone/backbone.js",
-        "jquery": "./vendor/jquery/jquery.js",
-        "rcolor": "./vendor/rcolor/rcolor.js"
+        "jquery": "./vendor/jquery/jquery.js"
     },
     "browserify-shim": {
         "jquery": "$",
@@ -43,8 +43,7 @@
             "exports": "Handlebars.templates",
             "depends": "handlebars"
         },
-        "moment": "moment",
-        "rcolor": "RColor"
+        "moment": "moment"
     },
     "browserify": {
         "transform": [

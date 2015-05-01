@@ -12,7 +12,7 @@
         "lodash": "2.4.1",
         "handlebars": "1.1.2",
         "backbone": "~1.1.0",
-        "rcolor": "git@github.com:sterlingwes/RandomColor.git"
+        "randomcolor": "0.2.0"
     },
     "exportsOverride": {
       "jquery": {
@@ -23,9 +23,6 @@
       },
       "backbone": {
           "": "backbone.js"
-      },
-      "rcolor": {
-          "": "rcolor.js"
       }
   }
 }
