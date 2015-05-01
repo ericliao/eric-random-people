@@ -27,7 +27,7 @@ module.exports = function (grunt) {
         /**
          * A Grunt task that compiles JavaScript files using Browserify.
          * @example grunt browserify
-         * @example grunt browserify:main
+         * @example grunt browserify:app
          * @see {@link https://github.com/jmreidy/grunt-browserify|grunt-browserify}
          * @see {@link http://browserify.org|browserify}
          */
@@ -39,9 +39,9 @@ module.exports = function (grunt) {
                     debug: true
                 }
             },
-            main: {
-                src: 'src/main.js',
-                dest: 'dist/main-min.js'
+            app: {
+                src: 'src/app.js',
+                dest: 'dist/app-min.js'
             }
         },
         /**
@@ -49,7 +49,25 @@ module.exports = function (grunt) {
          * @see {@link https://github.com/gruntjs/grunt-contrib-clean|grunt-contrib-clean}
          * @example grunt clean
          */
-        clean: ['vendor'],
+        clean: ['vendor', 'dist'],
+        /**
+         * Copies files and directories to /vendor.
+         * @see {@link https://github.com/gruntjs/grunt-contrib-copy|grunt-contrib-copy}
+         * @example copy:bower
+         */
+        copy: {
+            bower: {
+                files: [
+                    {
+                        expand: true,
+                        src: ['**/*.*'],
+                        cwd: 'vendor',
+                        dest: 'dist',
+                        filter: 'isFile'
+                    }
+                ]
+            }
+        },
         /**
          * Precompile handlebar templates
          * @see {@link https://github.com/gruntjs/grunt-contrib-handlebars|grunt-contrib-handlebars}
@@ -91,7 +109,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['src/**/*.js'],
-                tasks: ['clean', 'browserify:main', 'jshint']
+                tasks: ['common']
             },
             handlebars: {
                 files: ['src/templates/*.handlebars'],
@@ -122,12 +140,12 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean',
             'bower',
+            'copy:bower',
             'handlebars',
-            'browserify:main',
+            'browserify:app',
             'jshint'
         ]);
     });
-
     grunt.registerTask('dev', '', function () {
         grunt.config.set('env', 'dev');
         grunt.task.run([
@@ -142,4 +160,6 @@ module.exports = function (grunt) {
             'uglify:js'
         ]);
     });
+
+    grunt.loadNpmTasks('grunt-serve');
 };

@@ -19,10 +19,17 @@
         "grunt-contrib-jshint": "^0.10.0",
         "grunt-contrib-uglify": "^0.5.0",
         "grunt-contrib-watch": "^0.6.1",
+        "grunt-serve": "^0.1.6",
         "load-grunt-tasks": "^0.4.0",
         "mocha": "^2.1.0",
         "react": "^0.12.1",
         "reactify": "^0.17.1"
+    },
+    "browser": {
+        "lodash": "./vendor/lodash/lodash.compat.js",
+        "backbone": "./vendor/backbone/backbone.js",
+        "jquery": "./vendor/jquery/jquery.js",
+        "rcolor": "./vendor/rcolor/rcolor.js"
     },
     "browserify-shim": {
         "jquery": "$",

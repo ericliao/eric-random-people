@@ -16,13 +16,13 @@
     },
     "exportsOverride": {
       "jquery": {
-          "js": "jquery.js"
+          "": "jquery.js"
       },
       "underscore": {
-          "js": "underscore.js"
+          "": "underscore.js"
       },
       "backbone": {
-          "js": "backbone.js"
+          "": "backbone.js"
       },
       "rcolor": {
           "": "rcolor.js"
