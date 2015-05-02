@@ -6,6 +6,6 @@ module.exports = Backbone.View.extend({
     },
     render: function () {
         var view = this;
-        console.log(view.collection.toJSON());
+        console.log(view.collection);
     }
 });

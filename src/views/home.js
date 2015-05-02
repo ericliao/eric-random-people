@@ -4,7 +4,7 @@ var People = require('../collections/people'),
 module.exports = Backbone.View.extend({
     initialize: function () {
         var view = this;
-        view.collection = new People();
+        view.collection = new People([], {'number': 10});
         view.collection.fetch({
             success: function () {
                 view.render();
