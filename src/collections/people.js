@@ -1,5 +1,9 @@
 var Person = require('../models/person');
 
 module.exports = Backbone.Collection.extend({
-    model: Person
+    url: 'http://api.randomuser.me/?results=25',
+    model: Person,
+    parse: function(response) {
+        return response.results;
+    }
 });

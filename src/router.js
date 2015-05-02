@@ -1,4 +1,5 @@
-var HomeView = require('./views/home'),
+var Person = require('./models/person'),
+    HomeView = require('./views/home'),
     homeView = new HomeView();
 
 module.exports = Backbone.Router.extend({
@@ -12,6 +13,12 @@ module.exports = Backbone.Router.extend({
     },
     home: function () {
     },
-    personDetails: function () {
+    personDetails: function (id) {
+        var person = new Person({seed: id});
+        person.fetch({
+            success: function (data) {
+                new PersonView({model: data});
+            }
+        });
     }
 });
