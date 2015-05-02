@@ -1,4 +1,5 @@
 var Person = require('./models/person'),
+    PersonView = require('./views/person'),
     HomeView = require('./views/home'),
     homeView = new HomeView();
 

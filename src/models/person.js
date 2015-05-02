@@ -1,5 +1,3 @@
 module.exports = Backbone.Model.extend({
-    render: function () {
-        // render using react
-    }
+    idAttribute: '_id',
 });
