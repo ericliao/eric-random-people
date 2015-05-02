@@ -1,13 +1,17 @@
-require('backbone');
-
-var Films = require('./collections/films.js');
-
 module.exports = Backbone.Router.extend({
+
     routes: {
-        'films': 'films'
+        '': 'home',
+        'person/:id': personDetails
     },
-    films: function () {
-		var films = new Films();
-		films.fetch();
-    }
+
+    initialize: function () {
+        this.headerView = new HeaderView();
+        $('.header').html(this.headerView.render().el);
+
+        // Close the search dropdown on click anywhere in the UI
+        $('body').click(function () {
+            $('.dropdown').removeClass("open");
+        });
+    },
 });

@@ -1,10 +1,10 @@
 {
-    "name": "swapi-viewer",
+    "name": "random-people",
     "version": "0.0.1",
     "author": "Eric Liao",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ericliao/swapi-viewer.git"
+        "url": "https://github.com/ericliao/random-people.git"
     },
     "devDependencies": {
         "browserify": "^8.1.0",
@@ -23,8 +23,7 @@
         "load-grunt-tasks": "^0.4.0",
         "mocha": "^2.1.0",
         "react": "^0.12.1",
-        "reactify": "^0.17.1",
-        "swapi-node": "0.2.0"
+        "reactify": "^0.17.1"
     },
     "browser": {
         "lodash": "./vendor/lodash/lodash.compat.js",
@@ -42,8 +41,7 @@
         "handlebars.templates": {
             "exports": "Handlebars.templates",
             "depends": "handlebars"
-        },
-        "moment": "moment"
+        }
     },
     "browserify": {
         "transform": [
