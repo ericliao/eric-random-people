@@ -29,6 +29,12 @@ module.exports = Backbone.Model.extend({
             }
         }).join(', ');
     },
+    dob: function () {
+        // convert date of birth to human readable
+        var dob = this.get('dob');
+        var age = moment().diff(moment.unix(dob), 'years');
+        return moment.unix(dob).format('D MMM YYYY') + ' (' + age + ' years old)';
+    },
     card_info: function () {
         var person = this.toJSON();
         return {

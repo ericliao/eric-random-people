@@ -12,11 +12,7 @@ var Person = React.createClass({
         var model = view.props.model;
         var person = model.toJSON();
         var info = model.card_info();
-
-        // convert date of birth to human readable
-        var age = moment().diff(moment.unix(person.dob), 'years');
-        person.dob = moment.unix(person.dob).format('D MMM YYYY')
-                    + ' (' + age + ' years old)';
+        person.dob = model.dob();
 
         // list of additional person details
         var more_details = {
