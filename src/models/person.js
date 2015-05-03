@@ -13,11 +13,21 @@ module.exports = Backbone.Model.extend({
             return result.user;
         })[0];
     },
+    name: function () {
+        return _.map(this.get('name'), function (v, k) {
+            return v.capitalize();
+        }).join(' ');
+    },
+    location: function () {
+        return _.map(this.get('location'), function (v, k) {
+            return v.capitalize();
+        }).join(', ');
+    },
     card_info: function () {
         var person = this.toJSON();
         return {
-            'name': person.name,
-            'location': person.location,
+            'name': this.name(),
+            'location': this.location(),
             'picture': person.picture
         };
     }

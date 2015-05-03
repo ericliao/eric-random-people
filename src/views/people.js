@@ -23,7 +23,7 @@ module.exports = Backbone.View.extend({
                 <ul className="topcoat-list__container">
                     {view.collection.map(function (model) {
                         var info = model.card_info();
-                        return <li className="topcoat-list__item details-item" key={model.seed} >
+                        return <li className="topcoat-list__item details-item person-card" key={model.seed} >
                                 <CardView info={info} seed={model.seed}/>
                                </li>
                     })}

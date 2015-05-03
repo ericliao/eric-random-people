@@ -1,8 +1,7 @@
 var Person = require('./models/person'),
     People = require('./collections/people'),
     PersonView = require('./views/person'),
-    PeopleView = require('./views/people'),
-    HomeView = require('./views/home');
+    PeopleView = require('./views/people');
 
 module.exports = Backbone.Router.extend({
     el: '.random-people-container',

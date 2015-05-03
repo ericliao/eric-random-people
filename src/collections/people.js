@@ -7,7 +7,10 @@ module.exports = Backbone.Collection.extend({
             Math.random().toString(36).substring(2, 15);
     },
     generate: function (number) {
-        // generate list of seeds to fetch random people
+        // generate list of seeds to fetch random people we have
+        // to do this because the seeds fetched by requesting
+        // multiple users (see https://randomuser.me/documentation#multiple)
+        // does not generate the same users when specified separately.
         var view = this;
         var seeds = _.range(number).map(function () {
             return view.seed();

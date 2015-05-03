@@ -7,19 +7,27 @@ var React = require('react');
 var Picture = React.createClass({
     render: function () {
         var view = this;
-        //return (
-        //);
+        return (
+            <img className="thumbnail" src={view.props.thumbnail}></img>
+        );
     }
 });
+
+String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
 module.exports = React.createClass({
     render: function () {
         var view = this;
-        var name = view.props.info.name;
         var href = view.props.seed ? '#person/' + view.props.seed : (void 0);
+        var picture = view.props.info.picture;
         return (
-            <a className="person-panel" href={href}>
-                <h2>{name.title} {name.first} {name.last}</h2>
+            <a className="person-card" href={href}>
+                <Picture thumbnail={picture.thumbnail} />
+                <h2 className="name">{view.props.info.name}</h2>
+                <p>Address:</p>
+                <p>{view.props.info.location}</p>
             </a>
         );
     }

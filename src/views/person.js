@@ -28,7 +28,7 @@ var Person = React.createClass({
             <div>
                 <div className="topcoat-navigation-bar">
                     <div className="topcoat-navigation-bar__item left quarter">
-                        <a className="topcoat-icon-button--quiet back-button" href="#">Back</a>
+                        <a className="topcoat-icon-button back-button" href="#">Back</a>
                     </div>
                     <div className="topcoat-navigation-bar__item center half">
                         <h1 className="topcoat-navigation-bar__title">Random Person</h1>
@@ -58,6 +58,7 @@ var Person = React.createClass({
 module.exports = Backbone.View.extend({
     initialize: function () {
         var view = this;
+        document.title = 'Random Person: ' + view.model.name();
         view.render();
     },
     render: function () {
