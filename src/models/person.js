@@ -20,7 +20,13 @@ module.exports = Backbone.Model.extend({
     },
     location: function () {
         return _.map(this.get('location'), function (v, k) {
-            return v.capitalize();
+            if (k === 'street') {
+                return _.map(v.split(' '), function (_v) {
+                    return _v.capitalize();
+                }).join(' ');
+            } else {
+                return v.capitalize();
+            }
         }).join(', ');
     },
     card_info: function () {
