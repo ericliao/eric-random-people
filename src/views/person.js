@@ -34,7 +34,7 @@ var Person = React.createClass({
                 </div>
                 <ul className="topcoat-list__container">
                     <li className="topcoat-list__item person-view">
-                        <CardView info={info} />
+                        <CardView info={info} color={model.color} />
                         <ul className="topcoat-list__container">
                             {_.map(more_details, function (detail, key) {
                                 var href = detail[1] !== '' ? detail[1] + person[key] : (void 0);

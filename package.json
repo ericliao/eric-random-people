@@ -21,8 +21,10 @@
         "grunt-contrib-watch": "^0.6.1",
         "load-grunt-tasks": "^0.4.0",
         "mocha": "^2.1.0",
+        "randomcolor": "0.2.0",
         "react": "^0.12.1",
-        "reactify": "^0.17.1"
+        "reactify": "^0.17.1",
+        "randomcolor": "0.2.0"
     },
     "browser": {
         "lodash": "./vendor/lodash/lodash.compat.js",

@@ -7,8 +7,11 @@ var React = require('react');
 var Picture = React.createClass({
     render: function () {
         var view = this;
+        var style = {
+            'border': '2px solid ' + view.props.color
+        };
         return (
-            <img className="thumbnail" src={view.props.thumbnail}></img>
+            <img style={style} className="thumbnail" src={view.props.thumbnail}></img>
         );
     }
 });
@@ -24,7 +27,7 @@ module.exports = React.createClass({
         var picture = view.props.info.picture;
         return (
             <a className="person-card" href={href}>
-                <Picture thumbnail={picture.thumbnail} />
+                <Picture thumbnail={picture.thumbnail} color={view.props.color} />
                 <h2 className="name">{view.props.info.name}</h2>
                 <p>Address:</p>
                 <p>{view.props.info.location}</p>

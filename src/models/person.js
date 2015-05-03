@@ -1,6 +1,9 @@
+var Color = require('randomcolor');
+
 module.exports = Backbone.Model.extend({
     initialize: function (options) {
-        this.seed = options.seed || this.attributes._id;
+        this.seed = options.seed;
+        this.color = Color.randomColor();
         this.fetch();
     },
     url: function () {
@@ -21,6 +24,7 @@ module.exports = Backbone.Model.extend({
     location: function () {
         return _.map(this.get('location'), function (v, k) {
             if (k === 'street') {
+                // separately capitalize street name
                 return _.map(v.split(' '), function (_v) {
                     return _v.capitalize();
                 }).join(' ');
