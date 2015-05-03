@@ -1,3 +1,9 @@
+/* @jsx React.DOM */
+/* jshint ignore:start */
+'use strict';
+
+var React = require('react');
+
 module.exports = Backbone.View.extend({
     initialize: function () {
         var view = this;
@@ -8,3 +14,4 @@ module.exports = Backbone.View.extend({
         var view = this;
     }
 });
+/* jshint ignore:end */

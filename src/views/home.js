@@ -1,4 +1,9 @@
-var People = require('../collections/people'),
+/* @jsx React.DOM */
+/* jshint ignore:start */
+'use strict';
+
+var React = require('react'),
+    People = require('../collections/people'),
     PeopleView = require('../views/people');
 
 module.exports = Backbone.View.extend({
@@ -16,9 +21,18 @@ module.exports = Backbone.View.extend({
     render: function () {
         var view = this;
         // initialize view to display list of randome people
-        view.peopleView = new PeopleView({
+
+        /*
+            <div className="topcoat-navigation-bar">
+                <div className="topcoat-navigation-bar__item center full">
+                    <h1 className="topcoat-navigation-bar__title">Random Person</h1>
+                </div>
+            </div>
+        */
+        new PeopleView({
             collection: view.collection,
-            el: $('.topcoat-list__container')
+            el: this.el
         });
     }
 });
+/* jshint ignore:end */

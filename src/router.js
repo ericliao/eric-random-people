@@ -1,25 +1,23 @@
 var Person = require('./models/person'),
     PersonView = require('./views/person'),
-    HomeView = require('./views/home'),
-    homeView = new HomeView();
+    HomeView = require('./views/home');
 
 module.exports = Backbone.Router.extend({
     routes: {
         '': 'home',
         'person/:seed': 'personDetails'
     },
-    initialize: function () {
-        // this.headerView = new HeaderView();
-        // $('.header').html(this.headerView.render().el);
-    },
     home: function () {
+        new HomeView({
+            el: '.random-people-container'
+        });
     },
     personDetails: function (seed) {
         var person = new Person({seed: seed});
         person.fetch({
             success: function (data) {
                 new PersonView({
-                    el: '.topcoat-list__container',
+                    el: '.random-people-container',
                     model: data
                 });
             }

@@ -49,27 +49,39 @@ var Person = React.createClass({
 
         // list of additional person details
         var more_details = {
-            'dob': ['Date of Birth', ''],
             'phone': ['Phone', 'tel:'],
             'email': ['Email', 'email:'],
             'username': ['Username', ''],
-            'password': ['Password', '']
+            'password': ['Password', ''],
+            'dob': ['Date of Birth', '']
         };
         return (
-            <li className="topcoat-list__item person-view">
-                <Panel details={details} />
+            <div>
+                <div className="topcoat-navigation-bar">
+                    <div className="topcoat-navigation-bar__item left quarter">
+                        <a className="topcoat-icon-button--quiet back-button" href="#">Back</a>
+                    </div>
+                    <div className="topcoat-navigation-bar__item center half">
+                        <h1 className="topcoat-navigation-bar__title">Random Person</h1>
+                    </div>
+                </div>
                 <ul className="topcoat-list__container">
-                    {_.map(more_details, function (detail, key) {
-                        var href = detail[1] !== '' ? detail[1] + person[key] : (void 0);
-                        return <li className="topcoat-list__item details-item" key={key}>
-                                <a href={href}>
-                                    <p>{detail[0]}:</p>
-                                    <p>{person[key]}</p>
-                                </a>
-                            </li>
-                    })}
+                    <li className="topcoat-list__item person-view">
+                        <Panel details={details} />
+                        <ul className="topcoat-list__container">
+                            {_.map(more_details, function (detail, key) {
+                                var href = detail[1] !== '' ? detail[1] + person[key] : (void 0);
+                                return <li className="topcoat-list__item details-item" key={key}>
+                                        <a href={href}>
+                                            <p>{detail[0]}:</p>
+                                            <p>{person[key]}</p>
+                                        </a>
+                                    </li>
+                            })}
+                        </ul>
+                    </li>
                 </ul>
-            </li>
+            </div>
         );
     }
 });
