@@ -8,6 +8,7 @@ var React = require('react'),
 module.exports = Backbone.View.extend({
     initialize: function () {
         var view = this;
+        document.title = 'Random People';
         view.render();
         view.collection.on('add', view.render, view);
     },
