@@ -7,7 +7,7 @@ module.exports = Backbone.Collection.extend({
         this.number = Math.min(100, options.number);
     },
     url: function () {
-        // api url
+        // api url to return multiple people
         return 'http://api.randomuser.me/?results=' + this.number;
     },
     parse: function (response) {

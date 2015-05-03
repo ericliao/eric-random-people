@@ -35,6 +35,9 @@ module.exports = function (grunt) {
             options: {
                 watch: true,
                 browserifyOptions: {
+                    'transform': [
+                        ['reactify', {'es6': true}]
+                    ],
                     insertGlobals: true,
                     debug: true
                 }

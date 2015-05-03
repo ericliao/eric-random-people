@@ -6,7 +6,7 @@ var Person = require('./models/person'),
 module.exports = Backbone.Router.extend({
     routes: {
         '': 'home',
-        'person/:id': 'personDetails'
+        'person/:seed': 'personDetails'
     },
     initialize: function () {
         // this.headerView = new HeaderView();
@@ -14,11 +14,14 @@ module.exports = Backbone.Router.extend({
     },
     home: function () {
     },
-    personDetails: function (id) {
-        var person = new Person({seed: id});
+    personDetails: function (seed) {
+        var person = new Person({seed: seed});
         person.fetch({
             success: function (data) {
-                new PersonView({model: data});
+                new PersonView({
+                    el: '.topcoat-list__container',
+                    model: data
+                });
             }
         });
     }
