@@ -1,6 +1,8 @@
 /* @jsx React.DOM */
 /* jshint ignore:start */
 'use strict';
+require('moment');
+
 var React = require('react');
 
 var Picture = React.createClass({
@@ -41,7 +43,9 @@ var Person = React.createClass({
             'location': person.location,
             'picture': person.picture
         };
-        // use moment to convert person.dob =
+
+        // convert date of birth to human readable
+        person.dob = moment.unix(person.dob).format('D MMM YYYY');
 
         // list of additional person details
         var more_details = {
@@ -56,7 +60,7 @@ var Person = React.createClass({
                 <Panel details={details} />
                 <ul className="topcoat-list__container">
                     {_.map(more_details, function (detail, key) {
-                        var href = detail[1] !== '' ? detail[1] + person[key] : '#';
+                        var href = detail[1] !== '' ? detail[1] + person[key] : (void 0);
                         return <li className="topcoat-list__item details-item" key={key}>
                                 <a href={href}>
                                     <p>{detail[0]}:</p>

@@ -2,6 +2,10 @@
     padding: 0;
 }
 
+.person-panel {
+    padding-left: 1rem;
+}
+
 .details-item {
     padding: 0.5rem;
     padding-left: 1rem;

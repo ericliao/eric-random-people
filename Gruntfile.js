@@ -72,24 +72,6 @@ module.exports = function (grunt) {
             }
         },
         /**
-         * Precompile handlebar templates
-         * @see {@link https://github.com/gruntjs/grunt-contrib-handlebars|grunt-contrib-handlebars}
-         * @example grunt handlebars
-         */
-        handlebars: {
-            compile: {
-                options: {
-                    namespace: 'Handlebars.templates',
-                    processName: function (path) {
-                        return path.replace(/^src\/(?:templates|views)\/(.*)\.handlebars$/, '$1');
-                    }
-                },
-                files: {
-                    'dist/handlebar-templates.js': 'src/templates/*.handlebars'
-                }
-            }
-        },
-        /**
          * Configure jshint
          * @see {@link https://github.com/gruntjs/grunt-contrib-jshint|grunt-contrib-jshint}
          */
@@ -113,10 +95,6 @@ module.exports = function (grunt) {
             scripts: {
                 files: ['src/**/*.js'],
                 tasks: ['common']
-            },
-            handlebars: {
-                files: ['src/templates/*.handlebars'],
-                tasks: ['handlebars']
             }
         },
         /**
@@ -157,7 +135,6 @@ module.exports = function (grunt) {
             'clean',
             'bower',
             'copy:bower',
-            'handlebars',
             'browserify:app',
             'jshint'
         ]);
