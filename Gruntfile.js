@@ -45,6 +45,10 @@ module.exports = function (grunt) {
             app: {
                 src: 'src/app.js',
                 dest: 'dist/app.min.js'
+            },
+            test: {
+                src: 'test/index.js',
+                dest: 'test/build/index.min.js'
             }
         },
         /**
@@ -53,7 +57,7 @@ module.exports = function (grunt) {
          * @example grunt clean
          */
         clean: {
-            build: ['vendor', 'dist'],
+            build: ['vendor', 'dist', 'test/build'],
             dist: ['dist/vendor', 'css/build']
         },
         /**
@@ -83,7 +87,22 @@ module.exports = function (grunt) {
                         filter: 'isFile'
                     }
                 ]
-            }
+            },
+            test: {
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: [ // because npm mocha has a problem with browserify
+                            'node_modules/mocha/mocha.js',
+                            'node_modules/mocha/mocha.css',
+                            'node_modules/chai/chai.js'
+                        ],
+                        dest: 'vendor/test',
+                        filter: 'isFile'
+                    }
+                ]
+            },
         },
         /**
          * Configure jshint
@@ -108,7 +127,7 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['src/**/*.js'],
-                tasks: ['common']
+                tasks: ['common', 'browserify:test']
             },
             css: {
                 files: ['css/*.css'],
@@ -191,6 +210,7 @@ module.exports = function (grunt) {
         grunt.config.set('env', 'dev');
         grunt.task.run([
             'common',
+            'browserify:test',
             'clean:dist',
             'connect:server',
             'watch'

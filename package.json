@@ -32,7 +32,8 @@
         "lodash": "./vendor/lodash/lodash.compat.js",
         "backbone": "./vendor/backbone/backbone.js",
         "jquery": "./vendor/jquery/jquery.js",
-        "moment": "./vendor/moment/moment.js"
+        "moment": "./vendor/moment/moment.js",
+        "rsvp": "./vendor/rsvp/rsvp.js"
     },
     "browserify-shim": {
         "jquery": "$",

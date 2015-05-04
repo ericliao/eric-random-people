@@ -11,7 +11,8 @@
         "jquery": "~1.10.2",
         "lodash": "2.4.1",
         "backbone": "~1.1.0",
-        "moment": "^2.10.2"
+        "moment": "^2.10.2",
+        "rsvp": "^3.0.8"
     },
     "exportsOverride": {
       "jquery": {

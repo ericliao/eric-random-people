@@ -1,3 +1,7 @@
+require('jquery');
+require('moment');
+require('backbone');
+
 module.exports = Backbone.Model.extend({
     initialize: function (options) {
         this.seed = options.seed;
