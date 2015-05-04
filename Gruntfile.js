@@ -216,8 +216,8 @@ module.exports = function (grunt) {
             'watch'
         ]);
     });
-    grunt.registerTask('deploy', '', function () {
-        grunt.config.set('env', 'deploy');
+    grunt.registerTask('dist', '', function () {
+        grunt.config.set('env', 'dist');
         grunt.task.run([
             'common',
             'uglify:js',
