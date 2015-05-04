@@ -10,16 +10,19 @@
 .person-card {
     display: block;
     padding-left: 1rem;
+    padding-right: 0.5rem;
 }
 
 .person-card .name {
     margin-top: 0;
     margin-bottom: 8px;
+    margin-left: 90px;
     padding-top: 8px;
 }
 
 .person-card p {
     margin-bottom: 2px;
+    margin-left: 100px;
 }
 
 .person-card img {

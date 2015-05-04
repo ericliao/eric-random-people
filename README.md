@@ -20,7 +20,7 @@ git clone git://github.com/ericliao/eric-random-people.git
 cd eric-random-people
 
 # Install the Node dependencies and Bower dependencies.
-npm install -q
+npm install
 bower install
 
 # Build and run the server
@@ -42,7 +42,7 @@ Once ```grunt dev``` has been run, the unit tests are accessible [here](http://l
 cd eric-random-people
 
 # Install the Node dependencies and Bower dependencies.
-npm install -q
+npm install
 bower install
 
 # Build the distribution
