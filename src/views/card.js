@@ -16,10 +16,6 @@ var Picture = React.createClass({
     }
 });
 
-String.prototype.capitalize = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
-
 module.exports = React.createClass({
     render: function () {
         var view = this;

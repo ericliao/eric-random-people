@@ -11,8 +11,8 @@ module.exports = Backbone.Router.extend({
         'person/:seed': 'personDetails'
     },
     initialize: function () {
-        var view = this;
         // we fetch 10 random people from the API
+        var view = this;
         view.collection = new People();
         view.color_mapping = view.collection.generate(10);
     },
