@@ -22,6 +22,8 @@ var Person = React.createClass({
             'password': ['Password', ''],
             'dob': ['Date of Birth', '']
         };
+
+        // person view with 'card' component and more details
         return (
             <div>
                 <div className="topcoat-navigation-bar">

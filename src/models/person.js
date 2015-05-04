@@ -12,6 +12,7 @@ module.exports = Backbone.Model.extend({
         return 'http://api.randomuser.me/?seed=' + this.seed;
     },
     parse: function (response, options) {
+        // parse json response to get relevant details
         return _.map(response.results, function (result) {
             result.user.seed = result.seed;
             return result.user;
@@ -41,6 +42,7 @@ module.exports = Backbone.Model.extend({
         return moment.unix(dob).format('D MMM YYYY') + ' (' + age + ' years old)';
     },
     card_info: function () {
+        // generate info for card view
         var person = this.toJSON();
         return {
             'name': this.name(),

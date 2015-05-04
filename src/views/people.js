@@ -13,6 +13,7 @@ module.exports = Backbone.View.extend({
         view.collection.on('add', view.render, view);
     },
     render: function () {
+        // render card views of each person in the people collection
         var view = this;
         React.render(
             <div>

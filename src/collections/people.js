@@ -2,8 +2,8 @@ var RSVP = require('rsvp'),
     Color = require('randomcolor'),
     Person = require('../models/person');
 
-// generate deferred so we can set all fetched models
 var fetch_json = function (model) {
+    // return RSVP deferred promise so we know when fetch is completed
     var deferred = RSVP.defer();
     model.fetch({
         success: function (data) {
@@ -16,6 +16,7 @@ var fetch_json = function (model) {
 module.exports = Backbone.Collection.extend({
     model: Person,
     seed: function () {
+        // random seed string generator
         return Math.random().toString(36).substring(2, 15) +
             Math.random().toString(36).substring(2, 15);
     },
