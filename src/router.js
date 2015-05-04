@@ -39,7 +39,7 @@ module.exports = Backbone.Router.extend({
         } else {
             person = new Person({
                 seed: seed,
-                color: view.color_mapping[seed] || Color.randomColor()
+                color: view.color_mapping && view.color_mapping[seed] || Color.randomColor()
             });
             person.fetch({
                 success: function (data) {
