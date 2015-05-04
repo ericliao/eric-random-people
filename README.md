@@ -5,7 +5,7 @@ An example application that connects to the Random User Generator API
 and generates a set of random users. Users can then be clicked on to
 retrieve their details.
 
-![](http://ericliao.github.io/eric-random-people/)
+[Demo](http://ericliao.github.io/eric-random-people/)
 
 ## Running locally ##
 
