@@ -6,8 +6,10 @@ var React = require('react/addons'),
     TestUtils = React.addons.TestUtils,
     Color = require('randomcolor'),
     Person = require('../../src/models/person'),
+    People = require('../../src/collections/people'),
     CardView = require('../../src/views/card'),
-    PersonView = require('../../src/views/person');
+    PersonView = require('../../src/views/person'),
+    PeopleView = require('../../src/views/people');
 
 var get_person = function () {
     // get a specific person for testing
@@ -18,7 +20,6 @@ var get_person = function () {
 
 describe('View: Card', function () {
     var person, container, expected;
-
     before(function (done) {
         person = get_person();
         person.fetch({
@@ -50,7 +51,6 @@ describe('View: Card', function () {
 
 describe('View: Person', function () {
     var person, container, expected;
-
     before(function (done) {
         person = get_person();
         person.fetch({
@@ -82,6 +82,37 @@ describe('View: Person', function () {
                 return $(item).find('p:last').text();
             }).get();
             expect(details).to.deep.equal(expected);
+        });
+    });
+});
+
+describe('View: People', function () {
+    var people, container, color_mapping, expected;
+    before(function (done) {
+        people = new People();
+        color_mapping = people.generate(3, function (mapping) {
+            color_mapping = mapping;
+            done();
+        });
+    });
+
+    container = document.createElement('div');
+    it('Should render a People View', function () {
+        var view = new PeopleView({
+            el: container,
+            collection: people
+        });
+
+        expected = 'Random People';
+        it('expect h1 with correct title', function () {
+            var header = TestUtils.findRenderedDOMComponentWithTag(cardview, 'h1');
+            expect(header.getDOMNode().textContent).to.equal(expected);
+        });
+
+        expected = 3;
+        it('expect to render 3 person cards', function () {
+            var cards = TestUtils.findRenderedDOMComponentsWithTag(view, 'li');
+            expect(cards.length).to.equal(expected);
         });
     });
 });
