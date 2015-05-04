@@ -44,7 +44,7 @@ module.exports = function (grunt) {
             },
             app: {
                 src: 'src/app.js',
-                dest: 'dist/app-min.js'
+                dest: 'dist/app.min.js'
             }
         },
         /**
@@ -52,9 +52,12 @@ module.exports = function (grunt) {
          * @see {@link https://github.com/gruntjs/grunt-contrib-clean|grunt-contrib-clean}
          * @example grunt clean
          */
-        clean: ['vendor', 'dist'],
+        clean: {
+            build: ['vendor', 'dist'],
+            dist: ['dist/vendor', 'css/build']
+        },
         /**
-         * Copies files and directories to /vendor.
+         * Copies files and directories from /vendor to dist/vendor
          * @see {@link https://github.com/gruntjs/grunt-contrib-copy|grunt-contrib-copy}
          * @example copy:bower
          */
@@ -65,7 +68,18 @@ module.exports = function (grunt) {
                         expand: true,
                         src: ['**/*.*'],
                         cwd: 'vendor',
-                        dest: 'dist',
+                        dest: 'dist/vendor',
+                        filter: 'isFile'
+                    }
+                ]
+            },
+            fonts: {
+                files: [
+                    {
+                        expand: true,
+                        src: ['*.*'],
+                        cwd: 'font',
+                        dest: 'dist/font',
                         filter: 'isFile'
                     }
                 ]
@@ -95,6 +109,10 @@ module.exports = function (grunt) {
             scripts: {
                 files: ['src/**/*.js'],
                 tasks: ['common']
+            },
+            css: {
+                files: ['css/*.css'],
+                tasks: ['concat:css', 'cssmin']
             }
         },
         /**
@@ -116,6 +134,34 @@ module.exports = function (grunt) {
             }
         },
         /**
+         * Concatenates CSS
+         * @see {@link https://github.com/gruntjs/grunt-contrib-concat|grunt-contrib-concat}
+         */
+        concat: {
+            css: {
+                src: [
+                    'css/topcoat-mobile-dark.css',
+                    'css/styles.css'
+                ],
+                dest: 'css/build/combined.css'
+            }
+        },
+        /**
+         * Minify CSS
+         * @see {@link https://github.com/gruntjs/grunt-contrib-cssmin|grunt-contrib-cssmin}
+         */
+        cssmin: {
+            minify: {
+                files: [{
+                    expand: true,
+                    cwd: 'css/build/',
+                    src: ['combined.css'],
+                    dest: 'dist/css',
+                    ext: '.min.css'
+                }]
+            }
+        },
+        /**
          * Start connect server at http://localhost:9000/.
          * @see {@link https://github.com/gruntjs/grunt-contrib-connect|grunt-contrib-connect}
          * @example grunt connect
@@ -132,17 +178,20 @@ module.exports = function (grunt) {
 
     grunt.registerTask('common', '', function () {
         grunt.task.run([
-            'clean',
+            'clean:build',
             'bower',
-            'copy:bower',
+            'copy',
             'browserify:app',
-            'jshint'
+            'jshint',
+            'concat',
+            'cssmin'
         ]);
     });
     grunt.registerTask('dev', '', function () {
         grunt.config.set('env', 'dev');
         grunt.task.run([
             'common',
+            'clean:dist',
             'connect:server',
             'watch'
         ]);
@@ -151,7 +200,8 @@ module.exports = function (grunt) {
         grunt.config.set('env', 'deploy');
         grunt.task.run([
             'common',
-            'uglify:js'
+            'uglify:js',
+            'clean:dist'
         ]);
     });
 };

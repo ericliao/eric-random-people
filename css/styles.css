@@ -1,5 +1,6 @@
 .back-button {
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .person-view {
