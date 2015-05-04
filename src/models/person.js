@@ -1,9 +1,7 @@
-var Color = require('randomcolor');
-
 module.exports = Backbone.Model.extend({
     initialize: function (options) {
         this.seed = options.seed;
-        this.color = Color.randomColor();
+        this.color = options.color;
         this.fetch();
     },
     url: function () {

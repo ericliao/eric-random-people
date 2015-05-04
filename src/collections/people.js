@@ -1,4 +1,5 @@
-var Person = require('../models/person');
+var Color = require('randomcolor'),
+    Person = require('../models/person');
 
 module.exports = Backbone.Collection.extend({
     model: Person,
@@ -15,13 +16,17 @@ module.exports = Backbone.Collection.extend({
         var seeds = _.range(number).map(function () {
             return view.seed();
         });
+        var color_mapping = {};
         _.each(seeds, function (seed) {
-            var person = new Person({seed: seed});
+            var color = Color.randomColor();
+            color_mapping[seed] = color;
+            var person = new Person({seed: seed, color: color});
             person.fetch({
                 success: function (data) {
                     view.add(data);
                 }
             });
         });
+        return color_mapping;
     }
 });

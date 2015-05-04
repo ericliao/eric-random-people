@@ -1,4 +1,5 @@
-var Person = require('./models/person'),
+var Color = require('randomcolor'),
+    Person = require('./models/person'),
     People = require('./collections/people'),
     PersonView = require('./views/person'),
     PeopleView = require('./views/people');
@@ -13,7 +14,7 @@ module.exports = Backbone.Router.extend({
         var view = this;
         // we fetch 10 random people from the API
         view.collection = new People();
-        view.collection.generate(10);
+        view.color_mapping = view.collection.generate(10);
     },
     home: function () {
         // view of all the random people
@@ -26,7 +27,10 @@ module.exports = Backbone.Router.extend({
     personDetails: function (seed) {
         // view of a random person
         var view = this;
-        var person = new Person({seed: seed});
+        var person = new Person({
+            seed: seed,
+            color: view.color_mapping[seed] || Color.randomcolor()
+        });
         person.fetch({
             success: function (data) {
                 new PersonView({
