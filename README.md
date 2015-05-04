@@ -5,6 +5,8 @@ An example application that connects to the Random User Generator API
 and generates a set of random users. Users can then be clicked on to
 retrieve their details.
 
+![](http://ericliao.github.io/eric-random-people/)
+
 ## Running locally ##
 
 To run locally you will need to install [Node.js](http://nodejs.org) and
