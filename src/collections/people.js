@@ -36,14 +36,10 @@ module.exports = Backbone.Collection.extend({
             var person = new Person({seed: seed, color: color});
             promises.push(fetch_json(person));
         });
-        RSVP.all(promises).then(function (resolved) {
+        RSVP.all(promises).then(function (fetched) {
             // once all random person are fetched, we set them in the collection
-            view.set(resolved);
-            if (callback) {
-                callback(color_mapping);
-            } else {
-                return color_mapping;
-            }
+            view.set(fetched);
+            callback(color_mapping);
         });
     }
 });

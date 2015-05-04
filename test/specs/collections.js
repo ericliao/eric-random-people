@@ -13,11 +13,16 @@ describe('Collection: People', function () {
         });
     });
 
-    it('People should have 3 people', function() {
+    it('People should have 3 models', function () {
         expect(people.length).to.equal(3);
     });
 
-    it('color mapping should have 3 key:color items', function() {
+    it('color mapping should have 3 key:color items', function () {
         expect(_.size(color_mapping)).to.equal(3);
+    });
+
+    it('People should have person inside', function () {
+        expect(people.at(0)).to.have.property('color');
+        expect(people.at(0)).to.have.property('url');
     });
 });

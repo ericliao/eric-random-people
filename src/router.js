@@ -14,7 +14,9 @@ module.exports = Backbone.Router.extend({
         // we fetch 10 random people from the API
         var view = this;
         view.collection = new People();
-        view.color_mapping = view.collection.generate(10);
+        view.collection.generate(10, function (mapping) {
+            view.color_mapping = mapping;
+        });
     },
     home: function () {
         // view of all the random people

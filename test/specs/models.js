@@ -5,6 +5,7 @@ var Color = require('randomcolor'),
 
 var get_person = function () {
     // get a specific person for testing
+    // we specify the seed ensuring what we expect is consistent
     var color = Color.randomColor();
     return new Person({seed: 'eric', color: color});
 }
@@ -21,21 +22,21 @@ describe('Model: Person', function () {
         });
     });
 
-    it('Person should have a url', function() {
+    it('Person should have a url', function () {
         expect(person).to.have.property('url');
     });
-    it('Person should have a color', function() {
+    it('Person should have a color', function () {
         expect(person).to.have.property('color');
     });
-    it('Person should have a formatted name', function() {
+    it('Person should have a formatted name', function () {
         expected = 'Mr Corey Castillo';
         expect(person.name()).to.equal(expected);
     });
-    it('Person should have a formatted location', function() {
+    it('Person should have a formatted location', function () {
         expected = '3447 Pockrus Page Rd, Ironville, New jersey, 65776';
         expect(person.location()).to.equal(expected);
     });
-    it('Person should have a formatted dob', function() {
+    it('Person should have a formatted dob', function () {
         expected = '7 Jul 1981 (33 years old)';
         expect(person.dob()).to.equal(expected);
     });
