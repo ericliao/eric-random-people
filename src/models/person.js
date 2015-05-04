@@ -2,7 +2,6 @@ module.exports = Backbone.Model.extend({
     initialize: function (options) {
         this.seed = options.seed;
         this.color = options.color;
-        this.fetch();
     },
     url: function () {
         // api url to just return this person

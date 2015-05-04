@@ -26,18 +26,27 @@ module.exports = Backbone.Router.extend({
     },
     personDetails: function (seed) {
         // view of a random person
+        // only fetch from API if person does not exist in collection
         var view = this;
-        var person = new Person({
-            seed: seed,
-            color: view.color_mapping[seed] || Color.randomcolor()
-        });
-        person.fetch({
-            success: function (data) {
-                new PersonView({
-                    el: view.el,
-                    model: data
-                });
-            }
-        });
+        var person = view.collection.findWhere({seed: seed});
+        if (person) {
+            new PersonView({
+                el: view.el,
+                model: person
+            });
+        } else {
+            person = new Person({
+                seed: seed,
+                color: view.color_mapping[seed] || Color.randomColor()
+            });
+            person.fetch({
+                success: function (data) {
+                    new PersonView({
+                        el: view.el,
+                        model: data
+                    });
+                }
+            });
+        }
     }
 });
