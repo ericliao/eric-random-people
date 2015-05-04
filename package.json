@@ -26,7 +26,7 @@
         "randomcolor": "0.2.0",
         "react": "^0.12.1",
         "reactify": "^0.17.1",
-        "randomcolor": "0.2.0"
+        "sinon": "1.14.1"
     },
     "browser": {
         "lodash": "./vendor/lodash/lodash.compat.js",
